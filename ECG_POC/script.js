@@ -1,7 +1,7 @@
 var a;
 
 $(document).ready(function() {
-  a = new ECG()
+  a = new ECG('ecg');
   a.init();
 
   $('#btnIncreaseSpeed').click(function() {
