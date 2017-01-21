@@ -37,7 +37,7 @@ function PlethGraph(cid, datacb){
     g.current_y       =   0;
     g.erase_x         =   null;
     g.speed           =   2.2;
-    g.color           =   "#000000";
+    g.color           =   null;
     g.linewidth       =   1;
     g.scaleFactor     =   0.9;
     g.stop_graph      =   false;
