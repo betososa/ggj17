@@ -2,8 +2,13 @@ function ECG(canvasId) {
   var g = this;
   var ecg;
   
-  var ECG_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.10, 0.16, 0.10, 0, 0, 0, -0.04, -0.08, 0.3, 0.9, 0.3, -0.25, 0, 0, 0, 0, 0, 0.12, 0.16, 0.18, 0.2, 0.08, 0];
+  var ECG_DATA_ALIVE = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.10, 0.16, 0.10, 0, 0, 0, -0.04, -0.08, 0.3, 0.9, 0.3, -0.25, 0, 0, 0, 0, 0, 0.12, 0.16, 0.18, 0.2, 0.08, 0];
+  var ECG_data = ECG_DATA_ALIVE;
   var ECG_idx = 0;
+
+  ECG_COLOR_GREEN = "#0d910d";
+  ECG_COLOR_YELLOW = "#e8dc00";
+  ECG_COLOR_RED = "#a50909";
   
   var lastData = 0;
 
@@ -36,10 +41,8 @@ function ECG(canvasId) {
 
   g.init = function() {
     ecg = new PlethGraph(canvasId, g.getECG);
-    g.changeColor("#0d910d");
-    
-
-    start();
+    g.changeColor(ECG_COLOR_GREEN);
+    ecg.start();
   }
 
   g.increaseSpeed = function() {
@@ -65,11 +68,27 @@ function ECG(canvasId) {
     return output;
   }
 
+  function restartEcg() {
+    ecg.stop();
+    ecg = new PlethGraph(canvasId, g.getECG);
+    ecg.start();
+  }
+
+  g.restart = function() {
+    ECG_data = ECG_DATA_ALIVE;
+    restartEcg();
+  }
+
   function checkColor() {
     if (g.getSpeed() <= 30 && g.getSpeed() > 15) {
-      g.changeColor("#e8dc00");
+      g.changeColor(ECG_COLOR_YELLOW);
     } else if (g.getSpeed() <= 15) {
-      g.changeColor("#a50909");
+      g.changeColor(ECG_COLOR_RED);
     }
+
+    if (g.getSpeed() < 5) {
+      ECG_data = [0];
+      restartEcg();
+    };
   }
 }

@@ -57,7 +57,11 @@ function PlethGraph(cid, datacb){
      * The call to start the ging
      * ---------------------------------------- */
     g.start = function() {
-        reqAnimFrame =   window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame     ||
+        reqAnimFrame = 
+            window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
             window.oRequestAnimationFrame;
         
         // Recursive call to do animation frames
@@ -118,4 +122,8 @@ function PlethGraph(cid, datacb){
         // Stop the drawing
         g.context.closePath();
     };
+
+    g.stop = function() {
+        g.stop_graph = true;
+    }
 }
