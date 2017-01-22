@@ -18,12 +18,7 @@
     height: 100px;
     width: 100px;
 }
-.red {
-    background: red;
-}
-.green {
-    background: green;
-}
+
 .head {
     flex-direction: row;
     justify-content: flex-end;
@@ -36,14 +31,13 @@
 }
 .head, .foot {
     height: 100px;
-    background-color: #dedede;
+    background-color: #F8F8F8;
 }
 .score {
     font-family: Orbitron;
 }
 #content {
     flex: auto;
-    background-color: green;
     height: 100%;
 }
 .btn {
@@ -56,6 +50,7 @@
     display:inline-block;
     text-align:center;
     background-color:#DDDDDD;
+    cursor: pointer;
 }
 .nunito {
     font-family: 'Nunito Sans';
@@ -82,14 +77,39 @@
 }
 #frec {
     flex: 0 70%;
-    background: red;
     flex-direction: column;
 }
 #device {
     flex: 0 25%;
-    background: rebeccapurple;
     flex-direction: column;
 }
 .right {
     text-align: right
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#first {
+    background-image:url("../img/ggj_1.jpg");
+}
+
+#second {
+    background-image:url("../img/ggj_2.jpg");
+}
+
+#third {
+    background-image:url("../img/ggj_3.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+#splash {
+    transform: scale(0.5);
 }

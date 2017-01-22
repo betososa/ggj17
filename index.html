@@ -28,27 +28,27 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide flex flexcontainer">
-                    <div class="square red"></div>
-                    <div class="square green"></div>
+                    <div id="first" class="full"></div>
                 </div>
                 <div class="swiper-slide flex flexcontainer">
-                    <div class="square red"></div>
-                    <div class="square green"></div>
+                    <div id="second" class="full"></div>
                 </div>
                 <div class="swiper-slide flex flexcontainer">
-                    <span class="nunito">Introduce tu nombre</span>
-                    <input type="text" />
+                    <div id="third" class="full">
+                        <span class="nunito" style="font-size: 2em;">Introduce tu nombre</span>
+                        <input id="userName" type="text" />
+                    </div>
                 </div>
                 <div class="swiper-slide flex flexcol">
                     <header class="head flex">
                         <div class="wrapper flex">
                             <div class="name nunito">
                                 <span>User:</span>
-                                <span class="right">James Bond</span>
+                                <span class="right" id="user"></span>
                             </div>
                             <div class="score">
                                 <span>Score:</span>
-                                <span class="right">9999</span>
+                                <span class="right" id="points">0</span>
                             </div>
                         </div>
                     </header>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <footer class="foot flex">
-                        <a class="btn round nunito">Credits</a>
+                        <a id="credits" class="btn round nunito">Credits</a>
                     </footer>
                 </div>
             </div>
@@ -82,6 +82,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
 
         <script src="js/plugins.js"></script>
+        <script src="js/vendor/crate.js"></script>
 
         <script src="js/needle.js"></script>
         <script src="js/meter.js"></script>
