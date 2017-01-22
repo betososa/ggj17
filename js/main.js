@@ -8,6 +8,9 @@
         "Katniss Everdeen",
         "Yoda"
     ];
+    var timer;
+    var mySwiper;
+
     $(function () {
         $('#credits').click(function() {
             crate.init({
@@ -20,8 +23,11 @@
                 }
             })
         });
-        var mySwiper = new Swiper ('.swiper-container', {
+
+        mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal',
+            effect: 'fade',
+            speed: 1000,
             loop: false,
             keyboardControl: true,
             onSlideChangeEnd: function(e) {
@@ -39,6 +45,18 @@
                 }
             }
         });
+
+        $('#playIt').on('click', function () {
+            mySwiper.slideTo(3);
+        });
+
+        timer = setInterval(function (){
+            if (mySwiper.activeIndex !== 2) {
+                mySwiper.slideNext(true);
+            } else {
+                clearInterval(timer);
+            }
+        }, 5000);
     });
 
     function badStroke() {
