@@ -102,6 +102,10 @@
     background-image:url("../img/ggj_2.jpg");
 }
 
+#fourth {
+    background-image:url("../img/ggj_4.png");
+}
+
 #third {
     background-image:url("../img/ggj_3.jpg");
     display: flex;

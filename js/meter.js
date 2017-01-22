@@ -72,6 +72,9 @@ Meter.prototype.goodStroke = function () {
 Meter.prototype.badStroke = function () {
     if (this._badStrokeHandler) {
         this._badStrokeHandler();
+        document.getElementById('pain').pause();
+        document.getElementById('pain').currentTime = 0;
+        document.getElementById('pain').play();
     }
     console.log('Bad stroke');
 }

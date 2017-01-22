@@ -88,6 +88,8 @@ function ECG(canvasId) {
 
     if (g.getSpeed() < 5) {
       ECG_data = [0];
+      document.getElementById('beat').pause();
+      document.getElementById('death').play();
       g.restartEcg();
     };
   }
