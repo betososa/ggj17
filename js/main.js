@@ -17,7 +17,7 @@
                     ecg = new ECG('ecg');
                     ecg.init();
                     var canvas = $('#meter')[0];
-                    meter = new Meter(canvas, 500, undefined, badStroke);
+                    meter = new Meter(canvas, 20, undefined, badStroke);
                     meter.startMeter();
                 }
             }

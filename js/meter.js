@@ -2,6 +2,8 @@ function Meter(canvas, startInterval, goodStrokeHandler, badStrokeHandler) {
     this._ctx = canvas.getContext('2d');
     this._timer = null;
     this._angle = 180;
+    this._currentAngle = 180;
+    this._direction = true;
     this._successfulHits = 0;
     this._goodStrokeHandler = goodStrokeHandler;
     this._badStrokeHandler = badStrokeHandler;
@@ -9,20 +11,25 @@ function Meter(canvas, startInterval, goodStrokeHandler, badStrokeHandler) {
 
     var lengthNeedle = canvas.width > canvas.height ? canvas.height - canvas.height * .1 : canvas.width - canvas.width * .1;
 
-    this._needle = new Needle(this._ctx, canvas.width / 2, canvas.height - 20, lengthNeedle);
+    this._needle = new Needle(this._ctx, canvas.width / 2, canvas.height - 15, lengthNeedle);
 }
 
-Meter.prototype.draw = function(angle) {
+Meter.prototype.draw = function (angle) {
     this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
-    this._needle.draw(this._ctx, angle);
-    this._angle = angle;
+    this._needle.draw(this._ctx, this._currentAngle);
 }
 
-Meter.prototype.startMeter = function() {
+Meter.prototype.startMeter = function () {
     var that = this;
     this._timer = setInterval(function() { 
-        var angle = Math.floor((Math.random() * 180) + 0);
-        that.draw(angle);
+        if (that._direction && that._currentAngle >= that._angle) {
+            that._currentAngle -= 5;
+        } else if (!that._direction && that._currentAngle <= that._angle) {
+            that._currentAngle += 5;
+        } else {
+            that.generateNewMovement();
+        }
+        that.draw();
     }, this._interval);
     $(window).on('keypress', function (e) {
         if (e.which === 32) {
@@ -35,18 +42,24 @@ Meter.prototype.startMeter = function() {
     });
 }
 
-Meter.prototype.stopMeter = function() {
+Meter.prototype.generateNewMovement = function () {
+    var prevAngle = this._angle;
+    this._angle = Math.floor((Math.random() * 180) + 0);
+    this._direction = this._angle >= prevAngle
+}
+
+Meter.prototype.stopMeter = function () {
     clearInterval(this._timer);
     $(window).off('keypress');
 }
 
 Meter.prototype.goodStroke = function () {
     this._successfulHits++;
-    if (this._successfulHits >= 1 && this._interval >= 50) {
+    if (this._successfulHits >= 3 && this._interval >= 5) {
         console.log(this._successfulHits);
         console.log(this._interval);
         this.stopMeter();
-        this._interval -= this._interval * .1;
+        this._interval--;
         this.startMeter();
         this._successfulHits = 0;
     }

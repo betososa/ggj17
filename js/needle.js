@@ -31,4 +31,10 @@ Needle.prototype.draw = function(ctx, angle) {
     ctx.fillStyle="#000000";
     ctx.fill();
     ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(this._cx, this._cy, 15, 0, 2*Math.PI);
+    ctx.fillStyle="#999999";
+    ctx.fill();
+    ctx.stroke();
 }
