@@ -1,0 +1,95 @@
+.swiper-container {
+    width: 98vw;
+    height: 98vh;
+}
+.flex {
+    display: flex;
+}
+.flexcontainer {
+   flex-direction: row;
+   align-items: stretch;
+   justify-content: space-around;
+   flex-flow: row wrap;
+}
+.flexcol {
+    flex-direction: column;
+}
+.square {
+    height: 100px;
+    width: 100px;
+}
+.red {
+    background: red;
+}
+.green {
+    background: green;
+}
+.head {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.foot {
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+}
+.head, .foot {
+    height: 100px;
+    background-color: #dedede;
+}
+.score {
+    font-family: Orbitron;
+}
+#content {
+    flex: auto;
+    background-color: green;
+    height: 100%;
+}
+.btn {
+    text-decoration:none;
+    color:#333333;
+    font-size:12px;
+    font-weight:bold;
+    padding:0 15px;
+    line-height:32px;
+    display:inline-block;
+    text-align:center;
+    background-color:#DDDDDD;
+}
+.nunito {
+    font-family: 'Nunito Sans';
+}
+.btn.round{
+    border-radius: 3px;
+}
+.wrapper-content {
+    height: 75%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.wrapper {
+   flex-direction: column-reverse;
+   justify-content: flex-end;
+   margin-right: 30px;
+}
+
+
+#frec, #device {
+    min-width: 0;
+}
+#frec {
+    flex: 0 70%;
+    background: red;
+    flex-direction: column;
+}
+#device {
+    flex: 0 25%;
+    background: rebeccapurple;
+    flex-direction: column;
+}
+.right {
+    text-align: right
+}
