@@ -68,7 +68,7 @@ function ECG(canvasId) {
     return output;
   }
 
-  function restartEcg() {
+  g.restartEcg = function() {
     ecg.stop();
     ecg = new PlethGraph(canvasId, g.getECG);
     ecg.start();
@@ -76,7 +76,7 @@ function ECG(canvasId) {
 
   g.restart = function() {
     ECG_data = ECG_DATA_ALIVE;
-    restartEcg();
+    g.restartEcg();
   }
 
   function checkColor() {
@@ -88,7 +88,7 @@ function ECG(canvasId) {
 
     if (g.getSpeed() < 5) {
       ECG_data = [0];
-      restartEcg();
+      g.restartEcg();
     };
   }
 }
